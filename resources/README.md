@@ -15,7 +15,9 @@ Unstructured list of resources which I don't want to forget:
 ## Books
 
 * [Haskell school of music](https://www.amazon.co.uk/Haskell-School-Music-Signals-Symphonies/dp/1108416756)
-* [Programming in Haskell (in progress - first edition)](http://www.cs.nott.ac.uk/~pszgmh/book-old.html
-)
+* [Programming in Haskell ](http://www.cs.nott.ac.uk/~pszgmh/book-old.html
+) (in progress)
+ - [Nottingham uni course based on the book](https://www.youtube.com/playlist?list=PLF1Z-APd9zK7usPMx3LGMZEHrECUGodd3)
 * [Program = Proof](https://www.amazon.co.uk/PROGRAM-PROOF-Samuel-Mimram/dp/B08C97TD9G)
 * [Haskell in depth](https://www.amazon.co.uk/dp/161729540X/)
+* [Algorithm Design with Haskell](https://www.amazon.co.uk/gp/product/1108491618)
