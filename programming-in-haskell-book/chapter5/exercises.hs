@@ -9,3 +9,7 @@ grid m n = [(x, y) | x <- [0..m], y <- [0..n]]
 -- Question 3
 square :: Int -> [(Int, Int)]
 square n = [(x, y) | (x, y) <- grid n n, x /= y]
+
+-- Question 4
+replicate :: Int -> a -> [a]
+replicate n x = [x | _ <- [1..n]]
