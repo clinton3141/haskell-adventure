@@ -33,3 +33,26 @@ pyths' n = [(x, y, z) |
             z <- [1..n],
             x^2 + y^2 == z^2
           ]
+
+-- Question 6
+factors :: Int -> [Int]
+factors n = [x | x <- [1..n], n `mod` x == 0]
+
+perfects :: Int -> [Int]
+perfects n = [x | x <- [1..n], (sum . init . factors) x == x]
+
+-- Question 7
+question7TwoGenerators = [(x, y) | x <- [1,2], y <- [3,4]]
+question7SingleGenerators = concat [[(x, y) | y <- [3,4]] | x <- [1,2]]
+question7IsSame = question7TwoGenerators == question7SingleGenerators
+
+-- Question 8
+find :: Eq a => a -> [(a, b)] -> [b]
+find k t = [v | (k', v) <- t, k == k']
+
+positions :: Eq a => a -> [a] -> [Int]
+positions x xs = [n | (x', n) <- zip xs [0..], x' == x]
+
+-- Question 9
+scalarProduct :: [Int] -> [Int] -> Int
+scalarProduct xs ys = sum [x * y | (x, y) <- zip xs ys]
