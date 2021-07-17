@@ -1,0 +1,1 @@
+Exercises and notes as I work through [Category Theory for Programmers](https://github.com/hmemcpy/milewski-ctfp-pdf)
