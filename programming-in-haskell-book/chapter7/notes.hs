@@ -13,7 +13,7 @@ length' :: [a] -> Int
 length' = foldr (\_ n -> n + 1) 0
 
 -- fold left does the same but for operations which associate to the left
-foldl' :: (a -> b -> a) -> a -> [b] -> a
+foldl' :: (b -> a -> b) -> b -> [a] -> b
 foldl' f v [] = v
 foldl' f v (x:xs) = foldl' f (f v x) xs
 
