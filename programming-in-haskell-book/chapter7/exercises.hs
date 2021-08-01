@@ -72,3 +72,16 @@ iterate'' f x = unfold neverEmpty id f x
 
 -- Question 7, 8
 -- See transmitter.hs
+
+-- Question 9
+altMap :: (a -> b) -> (a -> b) -> [a] -> [b]
+altMap f g [] = []
+altMap f g xs = (f . head) xs : altMap g f (tail xs)
+
+-- Question 10
+luhnDouble :: Int -> Int
+luhnDouble n  | n < 5     = n * 2
+              | otherwise = n * 2 - 9
+
+luhn :: [Int] -> Bool
+luhn = (\x -> x `mod` 10 == 0) . sum . altMap luhnDouble id
