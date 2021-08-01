@@ -16,6 +16,13 @@ any' p []       = False
 any' p (x:xs)   | p x       = True
                 | otherwise = any' p xs
 
+-- more elegant alternatives
+all'' :: (a -> Bool) -> [a] -> Bool
+all'' p = and . map p
+
+any'' :: (a -> Bool) -> [a] -> Bool
+any'' p = or . map p
+
 
 takeWhile' :: (a -> Bool) -> [a] -> [a]
 takeWhile' p []     = []
