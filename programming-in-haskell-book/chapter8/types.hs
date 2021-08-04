@@ -1,4 +1,5 @@
 import GHC.Show
+import Prelude hiding (Maybe, Nothing, Just)
 
 -- Types are aliases
 type Pos = (Int,Int)
@@ -25,10 +26,10 @@ area :: Shape -> Float
 area (Circle r) = pi * r^2
 area (Rect x y) = x * y
 
-data Maybe' a = Nothing' | Just' a
-saveDiv :: Int -> Int -> Maybe' Int
-saveDiv _ 0 = Nothing'
-saveDiv x y = Just' (x `div` y)
+data Maybe a = Nothing | Just a deriving Show
+saveDiv :: Int -> Int -> Maybe Int
+saveDiv _ 0 = Nothing
+saveDiv x y = Just (x `div` y)
 
 -- newtype defines a new type with a single constructor
 -- here Nat type is comprised of constructor function N
