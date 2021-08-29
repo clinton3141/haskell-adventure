@@ -42,3 +42,47 @@ instance Functor MyList where
 -- of functor for a parameterised type.
 
 
+
+-- Applicatives generalise the idea of a functor to mappings of
+-- more than one argument
+-- This can be done using `pure` and `<*>`
+-- pure :: a -> f a
+-- (<*>) :: f (a -> b) -> f a -> f b
+-- fmap0 :: a -> f a
+-- fmap0 = pure
+-- fmap1 :: (a -> b) -> f a -> f b
+-- fmap1 f x = pure f <*> x
+-- fmap2 :: (a -> b -> c) -> f a -> f b -> f c
+-- fmap2 f x y = pure f <*> x <*> y
+-- ...
+class Functor f => Applicative f where
+  pure :: a -> f a
+  (<*>) :: f (a -> b) -> f a -> f b
+
+instance Applicative Maybe where
+  pure = Just
+  Nothing <*> _ = Nothing
+  (Just g) <*> mx = fmap g mx
+
+-- hence Maybe can handle failure
+-- ghci> pure (+) <*> Just 1 <*> Nothing -- Nothing
+-- ghci> pure (+) <*> Just 1 <*> Just 2 -- Just 3
+-- ghci> pure (\x -> \y -> \z -> x + y + z) <*> (Just 3) <*> Nothing <*> (Just 2) -- Nothing
+
+
+-- with lists, each function is applied to each argument
+instance Applicative [] where
+  pure x = [x]
+  gs <*> xs = [g x | g <- gs, x <- xs]
+-- ghci> pure (+) <*> [1,2] <*> [2,3] -- [3,4,4,5]
+
+-- Note that [a] is a generalisation of Maybe a that allows for multiple results in the case of success
+-- So [] may be thought of as a failure, and non empty list represents all possible successes
+
+-- get list of all products using a comprehension
+products :: [Int] -> [Int] -> [Int]
+products xs ys = [x * y | x <- xs, y <- ys]
+
+-- but now we may do it without naming intermediate results
+products' :: [Int] -> [Int] -> [Int]
+products' xs ys = pure (*) <*> xs <*> ys
